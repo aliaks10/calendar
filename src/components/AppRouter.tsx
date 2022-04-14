@@ -6,6 +6,7 @@ import {Navigate} from "react-router-dom";
 import {Layout} from "antd";
 import RequireAuth from "./RequireAuth";
 import PathConstants from "../constants/PathConstants";
+import NotFoundPage from "./pages/NotFoundPage";
 
 const AppRouter: FC = () => {
     return (
@@ -19,6 +20,8 @@ const AppRouter: FC = () => {
                             <CalendarPage />
                         </RequireAuth>
                     }/>
+                    <Route path="/404" element={<NotFoundPage />}/>
+                    <Route path="*" element={<Navigate to="/404" replace/>}/>
                 </Routes>
             </Layout>
         </>
