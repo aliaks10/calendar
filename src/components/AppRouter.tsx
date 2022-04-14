@@ -5,15 +5,16 @@ import CalendarPage from "./pages/CalendarPage";
 import {Navigate} from "react-router-dom";
 import {Layout} from "antd";
 import RequireAuth from "./RequireAuth";
+import PathConstants from "../constants/PathConstants";
 
 const AppRouter: FC = () => {
     return (
         <>
             <Layout>
                 <Routes>
-                    <Route path="/" element={<Navigate to="/login" replace/>}/>
-                    <Route path="/login" element={<LoginPage/>}/>
-                    <Route path="/calendar" element={
+                    <Route path="/" element={<Navigate to={`/${PathConstants.LOGIN}`} replace/>}/>
+                    <Route path={`/${PathConstants.LOGIN}`} element={<LoginPage/>}/>
+                    <Route path={`/${PathConstants.CALENDAR}`} element={
                         <RequireAuth>
                             <CalendarPage />
                         </RequireAuth>
