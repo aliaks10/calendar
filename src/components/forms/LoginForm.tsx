@@ -1,18 +1,30 @@
 import React, {ChangeEvent, useState} from 'react';
 import {Button, Form, Input, Row} from "antd";
 import {RulesHelper} from "../../utils/RulesHelper";
+import {IUser} from "../../models/IUser";
+import {useTypedSelector} from "../../hooks/useTypedSelector";
+import {useActions} from "../../hooks/useActions";
 
 const LoginForm = () => {
-    const [values, setValues] = useState({username: "", password: ""});
+    const [values, setValues] = useState<IUser>({username: "", password: ""});
+
+    const {login, setError} = useActions();
+    const {error, isLoading} = useTypedSelector(state => state.auth);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        if(error !== "") setError("");
         setValues(prevState => ({
             ...prevState, [e.target.name]: e.target.value
         }));
     };
 
+    const submit = () => {
+        const {username, password} = values;
+        login(username, password);
+    };
+
     return (
-        <Form>
+        <Form onFinish={submit}>
             <Form.Item
                 label="Username"
                 name="username"
@@ -39,11 +51,18 @@ const LoginForm = () => {
                     onChange={handleChange}
                 />
             </Form.Item>
+            {
+                error &&
+                <div className="error mb-20">
+                    {error}
+                </div>
+            }
             <Row justify="center">
                 <Form.Item>
                     <Button
                         type="primary"
                         htmlType="submit"
+                        loading={isLoading}
                     >
                         Login
                     </Button>

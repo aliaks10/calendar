@@ -8,8 +8,22 @@ body {
     margin-top: 30px;
 }
 
+.mb-20 {
+    margin-bottom: 20px;
+}
+
 .menu {
     flex-basis: 300px;
+}
+
+.error {
+    color: red;
+}
+
+.header-username {
+    float: left;
+    color: white;
+    padding: 0 20px;
 }
 
 .card {

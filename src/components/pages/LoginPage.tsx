@@ -3,9 +3,10 @@ import {Card, Row} from "antd";
 import {Navigate} from "react-router-dom";
 import PathConstants from "../../constants/PathConstants";
 import LoginForm from "../forms/LoginForm";
+import {useTypedSelector} from "../../hooks/useTypedSelector";
 
 const LoginPage: FC = () => {
-    const isAuth = false;
+    const {isAuth} = useTypedSelector(state => state.auth);
 
     if(isAuth) {
         return <Navigate to={`/${PathConstants.CALENDAR}`} replace />

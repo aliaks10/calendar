@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC, useEffect} from 'react';
 import {Route, Routes} from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import CalendarPage from "./pages/CalendarPage";
@@ -8,8 +8,18 @@ import RequireAuth from "./RequireAuth";
 import PathConstants from "../constants/PathConstants";
 import NotFoundPage from "./pages/NotFoundPage";
 import NavBar from "./NavBar";
+import {useActions} from "../hooks/useActions";
 
 const AppRouter: FC = () => {
+    const {setIsAuth, setUsername} = useActions();
+
+    useEffect(() => {
+        if(localStorage.getItem("isAuth")) {
+            setIsAuth(true);
+            setUsername(localStorage.getItem("username") || "");
+        }
+    }, []);
+
     return (
         <>
             <NavBar />
