@@ -1,5 +1,6 @@
 import React, {ChangeEvent, useState} from 'react';
 import {Button, Form, Input, Row} from "antd";
+import {RulesHelper} from "../../utils/RulesHelper";
 
 const LoginForm = () => {
     const [values, setValues] = useState({username: "", password: ""});
@@ -15,6 +16,7 @@ const LoginForm = () => {
             <Form.Item
                 label="Username"
                 name="username"
+                rules={[RulesHelper.required("Username field can not be empty")]}
             >
                 <Input
                     type="text"
@@ -27,6 +29,7 @@ const LoginForm = () => {
             <Form.Item
                 label="Password"
                 name="password"
+                rules={[RulesHelper.required("Password field can not be empty")]}
             >
                 <Input
                     type="password"
