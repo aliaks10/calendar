@@ -54,7 +54,8 @@ const EventForm: FC<EventFormProps> = ({submit}) => {
                 label="Date"
                 name="date"
                 rules={[
-                        RulesHelper.required("Date field can not be empty")
+                        RulesHelper.required("Date field can not be empty"),
+                        RulesHelper.checkDate("You can not choose date earlier than today")
                     ]}
             >
                 <DatePicker onChange={handleDateChoose} value={date}/>
