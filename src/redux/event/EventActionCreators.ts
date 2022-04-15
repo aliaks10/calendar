@@ -9,7 +9,7 @@ import {AppDispatch} from "../store";
 import {IUser} from "../../models/IUser";
 import {IEvent} from "../../models/IEvent";
 import {filterEventsByUsername} from "../../utils/GeneralHelper";
-import axios from "axios";
+import UserService from "../../services/UserService";
 
 export const EventActionCreators = {
     setEvents: (events: IEvent[]): SetEventsAction => ({type: EventActionEnum.SET_EVENTS, payload: events}),
@@ -30,7 +30,7 @@ export const EventActionCreators = {
     },
     fetchGuests: (username: string) => async (dispatch: AppDispatch) => {
         try {
-            const response = await axios.get<IUser[]>("./users.json");
+            const response = await UserService.getUsers();
             const filteredGuests = response.data.filter(x => x.username !== username);
             dispatch(EventActionCreators.setGuests(filteredGuests));
         } catch (e) {
