@@ -7,10 +7,12 @@ import {Layout} from "antd";
 import RequireAuth from "./RequireAuth";
 import PathConstants from "../constants/PathConstants";
 import NotFoundPage from "./pages/NotFoundPage";
+import NavBar from "./NavBar";
 
 const AppRouter: FC = () => {
     return (
         <>
+            <NavBar />
             <Layout>
                 <Routes>
                     <Route path="/" element={<Navigate to={`/${PathConstants.LOGIN}`} replace/>}/>

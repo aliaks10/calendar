@@ -7,3 +7,7 @@ body {
 .mt-30 {
     margin-top: 30px;
 }
+
+.menu {
+    flex-basis: 300px;
+}
