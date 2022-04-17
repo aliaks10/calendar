@@ -16,6 +16,14 @@ const LoginPage: FC = () => {
         <Row justify="center" align="middle">
             <Card className="card" title="Login" bordered={false}>
                 <LoginForm />
+                <p>You can log in using following credentials:</p>
+                <ul>
+                    <li>alex - 12345</li>
+                    <li>john - 23456</li>
+                    <li>kate - 34567</li>
+                    <li>michael - 45678</li>
+                    <li>lisa - 56789</li>
+                </ul>
             </Card>
         </Row>
     );
