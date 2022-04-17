@@ -20,7 +20,7 @@ const NavBar: FC = () => {
                     isAuth ?
                         <>
                             <div className="header-username">{username}</div>
-                            <Menu className="menu" theme="dark" mode="horizontal" selectable={false}>
+                            <Menu theme="dark" mode="horizontal" selectable={false}>
                                 <Menu.Item key={1}>
                                     <Link to={PathConstants.CALENDAR}>Calendar</Link>
                                 </Menu.Item>
